@@ -13,34 +13,95 @@
         </tr>
         <tr>
             <label>才</label>
-            <input type="number" id="tsi" name="pin" style="width: 100px; height: 20px ;margin-left:5px" />
+            <input type="number" id="tsi" name="tsi" style="width: 100px; height: 20px ;margin-left:5px" />
         </tr>
         <tr>
             <label>平方公尺</label>
             <input type="number" id="pinmeter" name="pinmeter" style="width: 100px; height: 20px ;margin-left:5px" />
         </tr>
+        <tr>
+            <Button onclick="myFunction()">計算</Button>
+        </tr>
     </td>
-    <div><Button onclick="myFunction()">計算</Button></div>
-    <p id=result>
+    <div></div>
+    <td>
+        <tr>
+            <label>台尺</label>
+            <input type="number" id="taimeter" name="taimeter" style="width: 100px; height: 20px ;margin-left:5px" />
+        </tr>
+        <tr>
+            <label>公尺</label>
+            <input type="number" id="meter" name="meter" style="width: 100px; height: 20px ;margin-left:5px" />
+        </tr>
+        <tr> <Button onclick="myFunction2()">計算</Button></tr>
+    </td>
 
-    </p>
+
 </body>
 </html>
 <script>
- function myFunction() {
+    var stablepin;
+    var stabletsi;
+    var stablepinmeter;
+    var stabletaimeter;
+    var stablemeter;
+    function myFunction() {
 
- var pin=document.getElementById("pin").value ;
-var tsi=document.getElementById("tsi").value ;
-var pinmeter=document.getElementById("pinmeter").value ;
+        var pin = document.getElementById("pin").value;
+        var tsi = document.getElementById("tsi").value;
+        var pinmeter = document.getElementById("pinmeter").value;
 
-  if(pin != null){
-  tsi = pin*36;
-  pinmeter = pin*3.30579;
-  document.getElementById("tsi").value = tsi;
-  document.getElementById("pinmeter").value = pinmeter;
-  }
+        if (pin != 0 && pin != stablepin) {
+            tsi = pin * 36;
+            pinmeter = pin * 3.30579;
+            document.getElementById("pin").value = pin;
+            document.getElementById("tsi").value = tsi;
+            document.getElementById("pinmeter").value = pinmeter;
+            stablepin = pin;
+            stabletsi = tsi;
+            stablepinmeter = pinmeter;
+        }
+        else if (tsi != 0 && tsi != stabletsi) {
+            pin = tsi * 0.0278;
+            pinmeter = tsi * 0.09;
+            document.getElementById("pin").value = pin;
+            document.getElementById("tsi").value = tsi;
+            document.getElementById("pinmeter").value = pinmeter;
+            stablepin = pin;
+            stabletsi = tsi;
+            stablepinmeter = pinmeter;
+        }
+        else if (pinmeter != 0 && pinmeter != stablepinmeter) {
+            pin = pinmeter * 0.3025;
+            tsi = pinmeter * 12;
+            document.getElementById("pin").value = pin;
+            document.getElementById("tsi").value = tsi;
+            document.getElementById("pinmeter").value = pinmeter;
+            stablepin = pin;
+            stabletsi = tsi;
+            stablepinmeter = pinmeter;
+        }
 
-}
+    }
+    function myFunction2() {
+        var taimeter = document.getElementById("taimeter").value;
+        var meter = document.getElementById("meter").value;
 
+        if (meter != 0 && meter != stablemeter) {
+            taimeter = meter * 3.3;
+
+            document.getElementById("taimeter").value = taimeter;
+            document.getElementById("meter").value = meter;
+            stablemeter = meter;
+            stabletaimeter = taimeter;
+        }
+        else if (taimeter != 0 && taimeter != stabletaimeter) {
+            meter = taimeter * 0.303;
+            document.getElementById("taimeter").value = taimeter;
+            document.getElementById("meter").value = meter;
+            stablemeter = meter;
+            stabletaimeter = taimeter;
+        }
+    }
 
 </script>
